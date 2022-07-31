@@ -7,29 +7,29 @@ class Cell {
         this.walls =[true,true,true,true]
         this.visited = false;
         this.x = i*w;
-        this.j = j*w;
+        this.y = j*w;
     }
 
     showCell(){
         
         stroke(255);
         if (this.walls[0]) {
-        line(x, y, x + w, y);
+        line(this.x, this.y, this.x + w, this.y);
         }
         if (this.walls[1]) {
-        line(x + w, y, x + w, y + w);
+        line(this.x + w, this.y, this.x + w, this.y + w);
         }
         if (this.walls[2]) {
-        line(x + w, y + w, x, y + w);
+        line(this.x + w, this.y + w, this.x, this.y + w);
         }
         if (this.walls[3]) {
-        line(x, y + w, x, y);
+        line(this.x, this.y + w, this.x, this.y);
         }
 
         if (this.visited) {
         noStroke();
         fill(255, 0, 255, 100);
-        rect(x, y, w, w);
+        rect(this.x, this.y, w, w);
         }
     
 
