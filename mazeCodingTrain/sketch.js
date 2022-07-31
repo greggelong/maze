@@ -8,7 +8,7 @@ function setup(){
     createCanvas(600,600);
     cols = floor(width/w);
     rows= floor(height/w);
-    // make two dimensional array
+    // put 2 d cell positions in a 1 d array
      
 
     for (let j =0; j < rows; j++){
