@@ -10,6 +10,21 @@ class Cell {
         this.y = j*w;
     }
 
+
+    visitNeighbor(){
+        // check for valid free neighbors 
+        // move
+        // need to convert grid 1 d to two d array
+        // use an index() function that also checks if it is valid
+        // in bounds
+        let result = [];
+         
+
+
+        // top 
+        if (this.j> 0 &&  )
+    }
+
     showCell(){
         
         stroke(255);
