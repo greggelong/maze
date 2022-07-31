@@ -17,6 +17,7 @@ function setup(){
 }
 
 function gridSetup(){
+    // sets up a blank 2d grid using the global grid array
     for (let j =0; j < rows; j++){
         let row = [];
         for (let i =0; i < cols; i++){
