@@ -22,7 +22,7 @@ class Cell {
 
 
         // top 
-        if (this.j> 0 &&  )
+        
     }
 
     showCell(){
