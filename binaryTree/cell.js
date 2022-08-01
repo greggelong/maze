@@ -54,7 +54,8 @@ class Cell {
 
     showCell(){
         
-        stroke(255);
+        stroke(255, 128, 0);
+        strokeWeight(map(w,10,120,1,20))
         if (this.walls.north) {
         line(this.x, this.y, this.x + w, this.y);
         }
