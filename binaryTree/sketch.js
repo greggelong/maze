@@ -10,8 +10,8 @@ function setup(){
     rows= floor(height/w);
     // put 2 d cell positions in a 1 d array
     gridSetup(); // runs on global grid don't need to pass or return
-    grid[0][0].walls.down = false;
-    grid[1][0].walls.up = false;
+    grid[0][0].doBinary();
+    runGrid();
     background(0)
     showGrid();
 }
@@ -28,7 +28,14 @@ function gridSetup(){
 }
  
  
+function runGrid(){
+    for (let j =0; j< rows;j++){
+       for(let i =0; i< cols;i++){
+       grid[j][i].doBinary();
+       }
 
+    }
+   }
 
 
 

@@ -27,13 +27,15 @@ class Cell {
             }
         }
 
-        else if (this.i= cols-1){
+        else if (this.i == cols-1){
             this.walls.north = false;
             grid[this.j-1][this.i].walls.south = false;
              
         }
+        
         else{
             let flip = random(["heads", "tails"])
+            print(flip)
 
             if (flip ==="heads"){
                 //erase north and south of above
