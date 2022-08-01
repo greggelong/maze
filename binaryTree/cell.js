@@ -4,53 +4,48 @@ class Cell {
         //x and y are values on canvas mult by cell width w is global
         this.i =i;
         this.j=j;
-        this.walls ={up:true,down:true,left:true,right:true}
+        this.walls ={north:true,south:true,west:true,east:true}
         this.visited = false;
         this.x = i*w;
         this.y = j*w;
     }
 
 
-    visitNeighbor(){
-        // check for valid free neighbors 
-        // move
-        // need to convert grid 1 d to two d array
-        // use an index() function that also checks if it is valid
-        // in bounds
-        let vfn = [];  //valid free neighbor
-        // only in bounds
-        let bottom, top, left, right;
-        if (this.j >0){
-
-            top = grid[this.j-1][this.i];
-            if (!top.visited){
-                vfn.push(top)
+    doBinary(){
+        // pic north or eastern wall and erase
+        // if top row erase eastern wall
+        // if eastern col erase top
+        // else pick east or north
+        
+        
+        if (this.j == 0){
+            // if the cell is the top row and not the far east
+            // erase the east wall of this and west wall of eastern neighbor
+            if (this.i<cols-1){
+                this.walls.east = false;
+                grid[this.j][this.i+1].walls.west = false;
             }
         }
 
-        if (this.j<rows-1){
-            print("bing",  grid[this.j+1][this.i])
-            bottom = grid[this.j+1][this.i];
-            if (!bottom.visited){
-                vfn.push(bottom)
+        else if (this.i= cols-1){
+            this.walls.north = false;
+            grid[this.j-1][this.i].walls.south = false;
+             
+        }
+        else{
+            let flip = random(["heads", "tails"])
+
+            if (flip ==="heads"){
+                //erase north and south of above
+                this.walls.north = false;
+                grid[this.j-1][this.i].walls.south = false;
+            }else{
+                this.walls.east = false;
+                grid[this.j][this.i+1].walls.west = false;
             }
         }
 
-        if (this.i > 0){
-            left = grid[this.j][this.i-1]
-            if (!left.visited){
-                vfn.push(left)
-            }
-        }
-        if (this.i<cols-1){
-            right = grid[this.j][this.i+1]
-            if (!right.visited){
-                vfn.push(right)
-            }
-        }
-
-        print("neighbors",vfn)
-
+         
         // have a working neighbors list
   
     }
@@ -58,16 +53,16 @@ class Cell {
     showCell(){
         
         stroke(255);
-        if (this.walls.up) {
+        if (this.walls.north) {
         line(this.x, this.y, this.x + w, this.y);
         }
-        if (this.walls.right) {
+        if (this.walls.east) {
         line(this.x + w, this.y, this.x + w, this.y + w);
         }
-        if (this.walls.down) {
+        if (this.walls.south) {
         line(this.x + w, this.y + w, this.x, this.y + w);
         }
-        if (this.walls.left) {
+        if (this.walls.west) {
         line(this.x, this.y + w, this.x, this.y);
         }
 
