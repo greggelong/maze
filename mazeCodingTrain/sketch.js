@@ -10,8 +10,8 @@ function setup(){
     rows= floor(height/w);
     // put 2 d cell positions in a 1 d array
     gridSetup(); // runs on global grid don't need to pass or return
-    grid[0][0].walls = [false,false,false,false]
-    grid[1][0].walls = [false,false,false,false]
+    grid[0][0].walls.down = false;
+    grid[1][0].walls.up = false;
     background(0)
     showGrid();
 }
@@ -27,12 +27,7 @@ function gridSetup(){
     }
 }
  
-function index(i, j) {
-    if (i < 0 || j < 0 || i > cols - 1 || j > rows - 1) {
-      return -1;
-    }
-    return i + j * cols;
-  }
+ 
 
 
 

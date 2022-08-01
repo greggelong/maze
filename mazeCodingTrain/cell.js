@@ -1,10 +1,10 @@
 class Cell {
     constructor(i,j){
         //i and j are values in grid
-        //x and y are values on canvas mult by cell width
+        //x and y are values on canvas mult by cell width w is global
         this.i =i;
         this.j=j;
-        this.walls =[true,true,true,true]
+        this.walls ={up:true,down:true,left:true,right:true}
         this.visited = false;
         this.x = i*w;
         this.y = j*w;
@@ -58,16 +58,16 @@ class Cell {
     showCell(){
         
         stroke(255);
-        if (this.walls[0]) {
+        if (this.walls.up) {
         line(this.x, this.y, this.x + w, this.y);
         }
-        if (this.walls[1]) {
+        if (this.walls.right) {
         line(this.x + w, this.y, this.x + w, this.y + w);
         }
-        if (this.walls[2]) {
+        if (this.walls.down) {
         line(this.x + w, this.y + w, this.x, this.y + w);
         }
-        if (this.walls[3]) {
+        if (this.walls.left) {
         line(this.x, this.y + w, this.x, this.y);
         }
 
