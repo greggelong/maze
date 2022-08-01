@@ -14,6 +14,15 @@ description from chapter 1 and put it in to javaScrip
 
 His code is in ruby and covered in chapter 2.
 
+-----------
+
+https://greggelong.github.io/maze/binaryTree/
+
+
+-------
+
+other links
+
 
 https://en.wikipedia.org/wiki/Maze_generation_algorithm
 
