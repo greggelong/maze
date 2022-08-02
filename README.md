@@ -32,7 +32,7 @@ These make such a maze trivial to escape if the exit is in that direction.
 
 But starting from the north east corner and exiting at south west is much less trivial.
 
-This can be an analogy for the mazes of options in our life.  What processes are removing or placing walls.  What textures and biases do our problems have. And maybe a change of perspective can help us solve these problems.
+This can be an analogy for the mazes of options in our life.  What processes are removing or placing walls or obstacles.  What textures and biases do our problems have. And maybe a change of perspective can help us solve these problems.
 
 
 
