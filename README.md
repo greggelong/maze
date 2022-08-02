@@ -18,7 +18,7 @@ His code is in ruby and covered in chapter 2.
 
 https://greggelong.github.io/maze/binaryTree/
 
-
+https://greggelong.github.io/maze/binaryTreeAscii/
 -------
 
 other links
