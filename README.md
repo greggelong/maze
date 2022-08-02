@@ -10,7 +10,7 @@ and its biases and texture are really instructive.
 
 He gives clear examples. I have followed his draw-by-hand
 
-description from chapter 1 and put it in to javaScrip
+description from chapter 1 and put it in to javaScript
 
 His code is in ruby and covered in chapter 2.
 
