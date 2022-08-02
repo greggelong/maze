@@ -19,7 +19,25 @@ His code is in ruby and covered in chapter 2.
 https://greggelong.github.io/maze/binaryTree/
 
 https://greggelong.github.io/maze/binaryTreeAscii/
+
 -------
+
+Jamis Buck in his book "Mazes" explains that a maze texture and bias arise from the algorithm that generates them. 
+
+The binary tree algorithm uses coin flips that either remove a cells north wall or east wall.
+
+This produces a maze that has the interesting texture of long unbroken north and east corridors. 
+
+These make such a maze trivial to escape if the exit is in that direction. 
+
+But starting from the north east corner and exiting at south west is much less trivial.
+
+This can be an analogy for the mazes of options in our life.  What processes are removing or placing walls.  What textures and biases do our problems have. And maybe a change of perspective can help us solve these problems.
+
+
+
+
+
 
 other links
 
