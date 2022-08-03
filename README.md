@@ -20,6 +20,10 @@ https://greggelong.github.io/maze/binaryTree/
 
 https://greggelong.github.io/maze/binaryTreeAscii/
 
+https://greggelong.github.io/maze/binaryTreeAsciiConnect/
+
+ascii animations are not working on firefox! but they work on edge and chrome
+
 -------
 
 Jamis Buck in his book "Mazes" explains that a maze texture and bias arise from the algorithm that generates them. 
