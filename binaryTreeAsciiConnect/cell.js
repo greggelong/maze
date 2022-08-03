@@ -8,6 +8,7 @@ class Cell {
         this.visited = false;
         this.x = i*w;
         this.y = j*w;
+        this.connected = [];
     }
 
 
@@ -24,13 +25,17 @@ class Cell {
             if (this.i<cols-1){
                 this.walls.east = false;
                 grid[this.j][this.i+1].walls.west = false;
+                //add connection to the east
+                this.connected.push("east")
+                grid[this.j][this.i+1].connected.push("west")
             }
         }
 
         else if (this.i == cols-1){
             this.walls.north = false;
             grid[this.j-1][this.i].walls.south = false;
-             
+            this.connected.push("north")
+            grid[this.j-1][this.i].connected.push("south")
         }
         
         else{
@@ -41,9 +46,13 @@ class Cell {
                 //erase north and south of above
                 this.walls.north = false;
                 grid[this.j-1][this.i].walls.south = false;
+                this.connected.push("north")
+                grid[this.j-1][this.i].connected.push("south")
             }else{
                 this.walls.east = false;
                 grid[this.j][this.i+1].walls.west = false;
+                this.connected.push("east")
+                grid[this.j][this.i+1].connected.push("west")
             }
         }
 
@@ -71,8 +80,8 @@ class Cell {
 
         if (this.visited) {
         noStroke();
-        fill(255, 0, 255, 100);
-        rect(this.x, this.y, w, w);
+        fill(255, 255, 0);
+        rect(this.x, this.y, w-2, w-2);
         }
     
 

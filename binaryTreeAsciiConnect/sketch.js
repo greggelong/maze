@@ -4,12 +4,14 @@ let grid =[];
 let mybutton, myslider;
 let asciiArt="";
 let textArt; // for pre
+let runner;
 
 
 
 function setup(){
     textArt = select('#textart');
     createCanvas(600,600);
+    frameRate(10)
     cols = floor(width/w);
     rows= floor(height/w);
     // put 2 d cell positions in a 1 d array
@@ -21,7 +23,39 @@ function setup(){
     background(0)
     showGrid();
     showGridAscii();
+    runner = grid[0][cols-1];
+    runner.visited = true
 }
+
+function draw(){
+    background(0);
+    runner.visited =true;
+    showGrid()
+    moveRunner();
+    
+}
+
+function moveRunner(){
+    //turn off runner
+    runner.visited = false;
+    // move and change runner
+    let options = runner.connected
+    let move = random(options)
+    if (move === 'north'){
+        runner = grid[runner.j-1][runner.i] // i and j are attributes of the cell
+    }
+    else if (move === 'south'){
+        runner = grid[runner.j+1][runner.i] // i and j are attributes of the cell
+    }
+    else if (move === 'east'){
+        runner = grid[runner.j][runner.i+1] // i and j are attributes of the cell
+    }
+    else if (move === 'west'){
+        runner = grid[runner.j][runner.i-1] // i and j are attributes of the cell
+    }
+
+}
+
 
 function doItAll(){
     background(0);
@@ -33,6 +67,8 @@ function doItAll(){
     runGrid();
     showGrid();
     showGridAscii();
+    runner = grid[0][cols-1];
+    runner.visited = true
 }
 
 function gridSetup(){
