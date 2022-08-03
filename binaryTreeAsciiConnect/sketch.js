@@ -31,6 +31,7 @@ function draw(){
     background(0);
     runner.visited =true;
     showGrid()
+    showGridAscii();
     moveRunner();
     
 }
@@ -120,10 +121,19 @@ function showGridAscii(){
         let middle = "|"; // adds in the west wall
         let bottom = "+" 
         for(let i =0; i< cols;i++){
-            if (grid[j][i].walls.east){
-                middle += "   |"; // three spaces and a pipe if an east wall
+
+            if (runner == grid[j][i]){
+                if (grid[j][i].walls.east){
+                    middle += " * |"; // three spaces and a pipe if an east wall
+                }else{
+                    middle+=" *  "; // otherwise for spaces
+                }
             }else{
-                middle+="    "; // otherwise for spaces
+                if (grid[j][i].walls.east){
+                    middle += "   |"; // three spaces and a pipe if an east wall
+                }else{
+                    middle+="    "; // otherwise for spaces
+                }
             }
             if (grid[j][i].walls.south){
                 bottom += "---+";
