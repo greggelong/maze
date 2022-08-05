@@ -22,7 +22,14 @@ https://greggelong.github.io/maze/binaryTreeAscii/
 
 https://greggelong.github.io/maze/binaryTreeAsciiConnect/
 
-ascii animations  
+
+ascii animations 
+
+https://greggelong.github.io/maze/binaryTreeAsciiRunners/
+
+only animated one runner in ascii so I don't actually call the ascii show function
+
+
 
 -------
 
