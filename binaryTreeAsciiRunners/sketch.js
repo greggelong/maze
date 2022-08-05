@@ -1,16 +1,18 @@
 let cols, rows;
-let w = 120; // width of the cell used in cell class
+let w = 50; // width of the cell used in cell class
 let grid =[];
 let mybutton, myslider;
 let asciiArt="";
 let textArt; // for pre
-let runner;
+let runners= [];
+let numOfRunners =20;
+// runner is its own class with own method to show so dont use visited
 
 
 
 function setup(){
     textArt = select('#textart');
-    createCanvas(600,600);
+    createCanvas(1000,1000);
     frameRate(10)
     cols = floor(width/w);
     rows= floor(height/w);
@@ -18,44 +20,34 @@ function setup(){
     gridSetup(); // runs on global grid don't need to pass or return
     mybutton = createButton("click to change");
     mybutton.mousePressed(doItAll)
-    myslider = createSlider(10, 120, 60, 1);
+    myslider = createSlider(10, 100, 50, 10);
     runGrid();
     background(0)
     showGrid();
-    showGridAscii();
-    runner = grid[0][cols-1];
-    runner.visited = true
+
+    // set up runners
+    for (let i =0; i<numOfRunners; i++){
+        runners[i] = new Runner (floor(cols/2),floor(rows/2),color(random(255),random(255),random(255))); // need to do runner before show ascii
+    }
+   // showGridAscii();   // must show ascii after runners
+    
 }
 
 function draw(){
     background(0);
-    runner.visited =true;
+    // show grids
     showGrid()
-    showGridAscii();
-    moveRunner();
+    //showGridAscii();
+
+    //loop through runners
+    for (let i = 0; i < runners.length;i++){
+    runners[i].moveRunner();
+    runners[i].showRunner()
+    }
+     
     
 }
 
-function moveRunner(){
-    //turn off runner
-    runner.visited = false;
-    // move and change runner
-    let options = runner.connected
-    let move = random(options)
-    if (move === 'north'){
-        runner = grid[runner.j-1][runner.i] // i and j are attributes of the cell
-    }
-    else if (move === 'south'){
-        runner = grid[runner.j+1][runner.i] // i and j are attributes of the cell
-    }
-    else if (move === 'east'){
-        runner = grid[runner.j][runner.i+1] // i and j are attributes of the cell
-    }
-    else if (move === 'west'){
-        runner = grid[runner.j][runner.i-1] // i and j are attributes of the cell
-    }
-
-}
 
 
 function doItAll(){
@@ -67,9 +59,13 @@ function doItAll(){
     gridSetup();
     runGrid();
     showGrid();
-    showGridAscii();
-    runner = grid[0][cols-1];
-    runner.visited = true
+    // reset runners
+    for (let i =0; i<numOfRunners; i++){
+        runners[i] = new Runner (floor(cols/2),floor(rows/2),color(random(255),random(255),random(255))); // need to do runner before show ascii
+    }
+     
+    //showGridAscii(); // need to do runner before show ascii
+     
 }
 
 function gridSetup(){
@@ -117,25 +113,25 @@ function showGridAscii(){
     //
 
 
-    for (let j =0; j< rows;j++){
+    for (let l =0; l< rows;l++){
         let middle = "|"; // adds in the west wall
         let bottom = "+" 
-        for(let i =0; i< cols;i++){
+        for(let k =0; k< cols;k++){
 
-            if (runner == grid[j][i]){
-                if (grid[j][i].walls.east){
+            if (runners[0].j == l && runners[0].i == k){  // just one
+                if (grid[l][k].walls.east){
                     middle += " * |"; // three spaces and a pipe if an east wall
                 }else{
                     middle+=" *  "; // otherwise for spaces
                 }
             }else{
-                if (grid[j][i].walls.east){
+                if (grid[l][k].walls.east){
                     middle += "   |"; // three spaces and a pipe if an east wall
                 }else{
                     middle+="    "; // otherwise for spaces
                 }
             }
-            if (grid[j][i].walls.south){
+            if (grid[l][k].walls.south){
                 bottom += "---+";
             }else{
                 bottom += "   +";
