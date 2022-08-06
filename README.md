@@ -29,7 +29,14 @@ https://greggelong.github.io/maze/binaryTreeAsciiRunners/
 
 only animated one runner in ascii so I don't actually call the ascii show function
 
+6/8/22  d/m/y
+I am having trouble doing dijkstra algorithm as a result of my sloppy set up
 
+I need to first check only unvisited neighbors but
+'
+currently I am checking all neighbors so the root will become overwritten 
+
+need to have a 
 
 -------
 
