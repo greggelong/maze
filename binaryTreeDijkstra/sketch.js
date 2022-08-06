@@ -155,54 +155,75 @@ function showGridAscii(){
     
     let root = grid[0][0];
     root.distance = 0;
+    root.visited = true;
     let distCount =1;
     let current = root;
     let front = getfront(current, distCount);
     console.log(front)
-   // while (front.length>0){
+    while (front.length>0){
         distCount++
-        newfront = []
+        let newfront = []
         for (let x =0; x < front.length; x++){
-            print("thisisit",front[x])
+            print('1',newfront)
             addtonewfront= getfront(front[x],distCount);
-            //newfront.push(addtonewfront);
+            print('2', addtonewfront)
+            newfront = newfront.concat(addtonewfront);
+            print('3', newfront)
         }
-       // front= newfront;
+        front =[]
+        for (let i =0;i<newfront.length;i++){
+            front[i] = newfront[i]
+
+        }
+         
+       }
+       print("newFront",front)
 
     }
      
 
- //} 
+  
 
 
  function getfront(mycell, distCount){
     let result =[];
     let neighbor = mycell.connected
+    mycell.visited=true;
+    if (mycell.connected == undefined){
+        return []
+    }else{
 
     for(let f = 0; f<neighbor.length;f++){
         if (neighbor[f] == "north"){
+            if ( grid[mycell.j-1][mycell.i].visited== false){
             grid[mycell.j-1][mycell.i].distance=distCount;
             result.push(grid[mycell.j-1][mycell.i])
+            }
 
         }
         else if (neighbor[f] == "south"){
+            if(grid[mycell.j+1][mycell.i].visited == false){
            grid[mycell.j+1][mycell.i].distance=distCount;
             result.push(grid[mycell.j+1][mycell.i])
-
+            }
         }
         else if (neighbor[f] == "east"){
+            if(grid[mycell.j][mycell.i+1].visited == false){
            grid[mycell.j][mycell.i+1].distance=distCount;
             result.push(grid[mycell.j][mycell.i+1])
+            }
 
         }
         else if (neighbor[f] == "west"){
+            if(grid[mycell.j][mycell.i-1].visited == false){
             grid[mycell.j][mycell.i-1].distance=distCount;
             result.push(grid[mycell.j][mycell.i-1])
+            }
 
         }
     }
     return result;
-
+    }
 
  }
 

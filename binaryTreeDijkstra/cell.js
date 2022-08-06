@@ -82,7 +82,7 @@ class Cell {
 
         if (this.visited) {
         noStroke();
-        fill(255, 255, 0);
+        fill(255, 255, 0, this.distance*2);
         rect(this.x, this.y, w-2, w-2);
         }
         //stroke(255);
