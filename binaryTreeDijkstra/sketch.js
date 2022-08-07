@@ -66,7 +66,7 @@ function doItAll(){
     }
      
     //showGridAscii(); // need to do runner before show ascii
-     
+    dijkstra();
 }
 
 function gridSetup(){
@@ -153,7 +153,7 @@ function showGridAscii(){
   
  function dijkstra(){
     
-    let root = grid[0][0];
+    let root = grid[floor(rows/2)][floor(cols/2)];
     root.distance = 0;
     root.visited = true;
     let distCount =1;
