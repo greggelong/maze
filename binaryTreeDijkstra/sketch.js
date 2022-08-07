@@ -5,7 +5,7 @@ let mybutton, myslider;
 let asciiArt="";
 let textArt; // for pre
 let runners= [];
-let numOfRunners =20;
+let numOfRunners =2;
 // runner is its own class with own method to show so dont use visited
 
 
@@ -35,7 +35,7 @@ function setup(){
 }
 
 function draw(){
-    background(0);
+    background(255);
     // show grids
     showGrid()
     //showGridAscii();
@@ -52,7 +52,7 @@ function draw(){
 
 
 function doItAll(){
-    background(0);
+    background(255);
     w = myslider.value();
     cols = floor(width/w);
     rows= floor(height/w);

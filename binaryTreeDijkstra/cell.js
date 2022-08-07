@@ -66,6 +66,7 @@ class Cell {
     showCell(){
         
         stroke(255, 128, 0);
+        //stroke(0,0,255)
         strokeWeight(map(w,10,120,1,20))
         if (this.walls.north) {
         line(this.x, this.y, this.x + w, this.y);
@@ -82,12 +83,13 @@ class Cell {
 
         if (this.visited) {
         noStroke();
-        fill(255, 255, 0, this.distance*2);
-        rect(this.x, this.y, w-2, w-2);
+        fill(0, 0,255,this.distance*3);
+        rect(this.x, this.y, w, w);
         }
         //stroke(255);
         noStroke();
-        fill(0,255,0)
+        //fill(0,255,0)
+        fill(0);
         textSize(w/2)
         text(this.distance,this.x+w/2, this.y+w/2)
     
