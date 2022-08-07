@@ -38,6 +38,11 @@ currently I am checking all neighbors so the root will become overwritten
 
 need to have a 
 
+--- 
+7/8/22 problem solved
+
+Using Dijkstra's algorithm to flood the maze with distances from the root (the center in these images). Brightness of the color is tied to distance. Jamis Buck's book mazes has a great explanation of the algorithm. My implementation felt a bit messy in javaScript but after a nightmare about the algorithm I was able to get it to work. The runners can access the distances or use the algorithm to calculate a different path. And in general I like longest paths. As my maze like life has no exit, or at least one I don't want to take. #maze #javascript #python #creativecoding #p5js #p5xjs #math 
+
 -------
 
 Jamis Buck in his book "Mazes" explains that a maze texture and bias arise from the algorithm that generates them. 
