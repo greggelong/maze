@@ -96,8 +96,11 @@ class Cell {
         //fill(0,255,0)
         fill(0);
         textSize(w/2)
-        //text(words[this.distance],this.x+w/2, this.y+w/2)
-        text(this.distance,this.x+w/2, this.y+w/2)
+        if(mouseX<width/2){
+        text(words[this.distance],this.x+w/2, this.y+w/2);
+        } else{
+        text(this.distance,this.x+w/2, this.y+w/2);
+        }
     
 
     }
