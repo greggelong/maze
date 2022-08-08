@@ -9,7 +9,7 @@ class Cell {
         this.x = i*w;
         this.y = j*w;
         this.connected = [];
-         
+        this.onpath = false; // for longest path
         this.distance=0;
     }
 
@@ -42,7 +42,7 @@ class Cell {
         
         else{
             let flip = random(["heads", "tails"])
-            print(flip)
+            //print(flip)
 
             if (flip ==="heads"){
                 //erase north and south of above
@@ -65,7 +65,7 @@ class Cell {
 
     showCell(){
         
-        stroke(255, 128, 0);
+        stroke(0);
         //stroke(0,0,255)
         strokeWeight(map(w,10,120,1,20))
         if (this.walls.north) {
@@ -86,12 +86,18 @@ class Cell {
         fill(0, 0,255,this.distance*3);
         rect(this.x, this.y, w, w);
         }
+        if (this.onpath) {   // show path in red
+            noStroke();
+            fill(255, 0,0, 100);
+            rect(this.x, this.y, w, w);
+            }
         //stroke(255);
         noStroke();
         //fill(0,255,0)
         fill(0);
         textSize(w/2)
-        text(words[this.distance],this.x+w/2, this.y+w/2)
+        //text(words[this.distance],this.x+w/2, this.y+w/2)
+        text(this.distance,this.x+w/2, this.y+w/2)
     
 
     }

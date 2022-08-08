@@ -8,6 +8,8 @@ let runners= [];
 let numOfRunners =2;
 // runner is its own class with own method to show so dont use visited
 let words;
+let root; // for dijkstra and longest path
+let greatestDistance =0;
 
 
 function preload() {
@@ -35,7 +37,9 @@ function setup(){
         runners[i] = new Runner (floor(cols/2),floor(rows/2),color(random(255),random(255),random(255))); // need to do runner before show ascii
     }
    // showGridAscii();   // must show ascii after runners
+    root = grid[floor(rows/2)][floor(cols/2)]; // need this before calling dijkstra or 
     dijkstra();
+    longestPath();  // can have this return an array to be used for animation and speech 
 }
 
 function draw(){
@@ -70,7 +74,9 @@ function doItAll(){
     }
      
     //showGridAscii(); // need to do runner before show ascii
+    root = grid[floor(rows/2)][floor(cols/2)]; // need this before calling dijkstra or 
     dijkstra();
+    longestPath(); // only call after dijkstra
 }
 
 function gridSetup(){
@@ -157,7 +163,7 @@ function showGridAscii(){
   
  function dijkstra(){
     
-    let root = grid[floor(rows/2)][floor(cols/2)];
+    
     root.distance = 0;
     root.visited = true;
     let distCount =1;
@@ -168,11 +174,11 @@ function showGridAscii(){
         distCount++
         let newfront = []
         for (let x =0; x < front.length; x++){
-            print('1',newfront)
+           // print('1',newfront)
             addtonewfront= getfront(front[x],distCount);
-            print('2', addtonewfront)
+            //print('2', addtonewfront)
             newfront = newfront.concat(addtonewfront);
-            print('3', newfront)
+            //print('3', newfront)
         }
         front =[]
         for (let i =0;i<newfront.length;i++){
@@ -181,9 +187,13 @@ function showGridAscii(){
         }
          
        }
-       print("newFront",front)
+       print("largest",distCount-1)
+       greatestDistance = distCount-1
 
     }
+
+
+    
      
 
   
@@ -228,6 +238,77 @@ function showGridAscii(){
     }
     return result;
     }
+
+ }
+
+
+ function longestPath(){
+    // returns longest path
+
+    // no backtracking required if you work backwards from largest distance I will save the largest distance from dijkstra in a var
+    //
+    // then search in my cell class for that distance
+    // cell.onpath can color a cell
+    let mypath =[];
+    root.onpath = true;
+    // find longest // could be more than one
+    for (let j =0; j< rows;j++){
+        for(let i =0; i< cols;i++){
+            if (grid[j][i].distance === greatestDistance){
+                grid[j][i].onpath = true;
+                mypath.push(grid[j][i])
+                print("gotit")
+            }
+        }
+
+     }
+
+     // for greatest disstance -1 start checking neighbors in path list (a list of cell objects)
+     // while current path 
+     let p =0 // array index counter
+     let currentStep = mypath[p]// 
+     
+     while(currentStep.distance>0){
+        // find neighbor with distance -1
+        
+        // check neighbors
+        let neighbor = currentStep.connected
+
+        for(let f = 0; f<neighbor.length;f++){
+            if (neighbor[f] == "north"){
+                if ( grid[currentStep.j-1][currentStep.i].distance === currentStep.distance-1){
+                grid[currentStep.j-1][currentStep.i].onpath = true;
+                mypath.push(grid[currentStep.j-1][currentStep.i])
+                }
+    
+            }
+            else if (neighbor[f] == "south"){
+                if(grid[currentStep.j+1][currentStep.i].distance === currentStep.distance-1){
+               grid[currentStep.j+1][currentStep.i].onpath=true;
+                mypath.push(grid[currentStep.j+1][currentStep.i])
+                }
+            }
+            else if (neighbor[f] == "east"){
+                if(grid[currentStep.j][currentStep.i+1].distance === currentStep.distance-1){
+               grid[currentStep.j][currentStep.i+1].onpath=true;
+                mypath.push(grid[currentStep.j][currentStep.i+1])
+                }
+    
+            }
+            else if (neighbor[f] == "west"){
+                if(grid[currentStep.j][currentStep.i-1].distance  === currentStep.distance-1){
+                grid[currentStep.j][currentStep.i-1].onpath=true;
+                mypath.push(grid[currentStep.j][currentStep.i-1])
+                }
+    
+            }
+        }
+
+        //increment 
+        p=p+1
+        currentStep = mypath[p]; // set current step
+
+     }
 
  }
 

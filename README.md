@@ -52,6 +52,11 @@ distances using 1000 character essay
 
 https://greggelong.github.io/maze/binaryTreeDijkstra1000
 
+
+I added a longest path algorithm but it but it had a problem as I assumed there would only be one longest path but their could be two
+
+so changed algorithm to a while loop and it works see images
+
 -------
 
 Jamis Buck in his book "Mazes" explains that a maze texture and bias arise from the algorithm that generates them. 
