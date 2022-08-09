@@ -88,3 +88,8 @@ http://weblog.jamisbuck.org/2011/2/7/maze-generation-algorithm-recap
 
 
 http://weblog.jamisbuck.org/2011/1/24/maze-generation-hunt-and-kill-algorithm
+
+
+maze generation in basic for c64
+
+http://www.defiancestudios.com/2019/03/20/recursive-backtracker-making-the-maze/
